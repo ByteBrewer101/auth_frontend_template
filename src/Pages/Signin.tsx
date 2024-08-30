@@ -1,8 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import InputBox from "../Components/inputbox";
 
+import axios from "axios";
+import { useState } from "react";
+
 export default function Signup() {
   const nav = useNavigate();
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+
+
+
+
+
+  const handler = async()=>{
+  
+try
+   { const response = await axios.post(
+     "http://localhost:3000/api/v1/user/signin",
+     {
+       username,
+       password,
+     }
+   );
+
+    if(response.status == 200)
+    {
+      console.log("signin success");
+      nav("/dashboard")
+    }
+    else{
+      console.log("problem logging in");
+    }}
+    catch(e){
+      console.log(e);
+    }
+
+  }
 
   return (
     <div className="h-screen  w-screen bg-gradient-tow-screen h-screen bg-gradient-to-r from-gray-900 to-slate-950 flex justify-center items-center">
@@ -15,15 +49,15 @@ export default function Signup() {
           inputType="text"
           label="Username"
           placeholder="johnDoe"
-          onChange={() => {}}
+          onChange={(e) => {setUsername(e.target.value)}}
         />
         <InputBox
           inputType="password"
           label="Password"
           placeholder="password"
-          onChange={() => {}}
+          onChange={(e) => {setPassword(e.target.value)}}
         />
-        <button className="w-full p-4 my-4 rounded-xl bg-white bg-opacity-90 font-bold hover:bg-opacity-5 hover:text-white transition ease-in-out duration-200">
+        <button className="w-full p-4 my-4 rounded-xl bg-white bg-opacity-90 font-bold hover:bg-opacity-5 hover:text-white transition ease-in-out duration-200" onClick={handler} >
           Submit
         </button>
         <div className="flex justify-center text-center items-center">
