@@ -1,6 +1,6 @@
-# My Vite React TypeScript Project
+# frontend of the auth template
 
-Welcome to my Vite React TypeScript project! This project is built using Vite, a modern frontend build tool that provides a fast and optimized development experience. With React and TypeScript, this project aims to deliver a robust and scalable web application.
+This project is built using Vite, a modern frontend build tool that provides a fast and optimized development experience. With React and TypeScript, this project aims to deliver a robust and scalable web application.
 
 ## Features
 
